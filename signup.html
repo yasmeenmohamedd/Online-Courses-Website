@@ -1,0 +1,231 @@
+﻿<html>
+<head>
+        <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+
+    <title>Sign Up</title>
+    <script type="text/javascript">
+        function validatepass() {
+            var password = document.getElementById("pass");
+            if (password.value.trim().length < 6) {
+                password.style.border = "solid 2px red";
+                document.getElementById("labelpass").style.visibility = "visible";
+                document.getElementById("labelpass").innerHTML = "Password should be 6 characters or more";
+
+                return false;
+
+            }
+            else {
+                return true;
+            }
+        }
+        function matchpass() {
+            var firstpassword = document.getElementById("pass");
+            var secondpassword = document.getElementById("confirmpass");
+
+            if (firstpassword.value == secondpassword.value) {
+                return true;
+            }
+            else {
+                secondpassword.style.border = "solid 2px red";
+                document.getElementById("labelconfirmpass").style.visibility = "visible";
+                document.getElementById("labelconfirmpass").innerHTML = "Passwords don't match each other";
+                return false;
+            }
+        }  
+        function validatemail() {
+            var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var email = document.getElementById("mail").value;
+            if (regex.test(email)) {
+                return true;
+
+            }
+            else {
+                
+                document.getElementById("mail").style.border = "solid 2px red";
+                document.getElementById("labelmail").style.visibility = "visible";
+                document.getElementById("labelmail").innerHTML = "Invalid Email Please enter a valid one";
+
+                return false;
+
+            }
+        }
+        function validateusername() {
+            var unameregex = /^[a-zA-Z\-]+$/;
+            var validateuname = document.getElementById("uname").value.match(unameregex);
+            if (validateuname == null) {
+                document.getElementById("uname").style.border = "solid 2px red";
+                document.getElementById("labeluname").style.visibility = "visible";
+                document.getElementById("labeluname").innerHTML = "Username is not valid. Only characters A-Z, a-z and '-' are  acceptable";
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+        function validatefirstname() {
+            var Firstname = document.getElementById("firstname");
+
+            if (Firstname.value.trim() == "") {
+                Firstname.style.border = "solid 2px red";
+                document.getElementById("labelfirstname").style.visibility = "visible";
+                document.getElementById("labelfirstname").innerHTML = "Firstname is required";
+                return false;
+            }
+
+
+            else {
+                return true;
+            }
+        }
+
+        function validatelastname() {
+            var Lastname = document.getElementById("lastname");
+
+            if (Lastname.value.trim() == "") {
+                Lastname.style.border = "solid 2px red";
+                document.getElementById("labellastname").style.visibility = "visible";
+                document.getElementById("labellastname").innerHTML = "Lastname is required";
+                return false;
+            }
+
+
+            else {
+                return true;
+            }
+        }
+
+
+
+
+
+
+        function check() {
+            var rightpass = validatepass();
+            var rightemail = validatemail();
+            var rightmatchpass = matchpass();
+            var rightusername = validateusername();
+            var rightfirstname = validatefirstname();
+            var rightlastname = validatelastname();
+            if (rightpass == true && rightemail == true && rightmatchpass == true && rightusername == true && rightfirstname == true && rightlastname == true) {
+                window.location = "home.html";
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+       
+         
+    </script>
+
+
+    <style>
+        body {
+            background: url('qqq.jpg');
+            background-size: cover;
+             font-family:'ABeeZee';
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            top: -88px;
+            left: 30%;
+        }
+
+        .rform {
+            max-width: 350px;
+            border-radius: 20px;
+            margin: auto;
+            background: rgba(0,0,0,0.8);
+            box-sizing: border-box;
+            padding: 40px;
+            color: #fff;
+            margin-top: 100px;
+        }
+        .rform p {
+            margin: 0%;
+            padding: 0%;
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 5px;
+            background: rgba(0,0,0,0.10);
+            outline: none;
+            border: none;
+            border-bottom: :1px dotted #fff;
+            color: white;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 0;
+            margin-top: 30px;
+            outline: none;
+            border: none;
+            background: #60adde;
+            opacity: 0.7;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+            input[type="button"]:hover {
+                background: #003366;
+                opacity: 0.7;
+            }
+    </style>
+</head>
+<body>
+  <div class="rform">
+        <img src="logo.png" class="avatar">
+      <h2>Sign Up Here</h2>
+      <form>
+          <p>First Name</p>
+          <input id="firstname" type="text" placeholder="First Name" required>
+          <label id="labelfirstname" style="color:red; visibility:hidden;"></label>
+          <p>Last Name</p>
+          <input id="lastname" type="text" placeholder="Last Name" required>
+          <label id="labellastname" style="color:red; visibility:hidden;"></label>
+          <p>Email</p>
+          <input id="mail" type="text" placeholder="Email" required>
+          <label id="labelmail" style="color:red; visibility:hidden;"></label>
+          <p>UserName</p>
+          <input id="uname" type="text" placeholder="Username" required>
+          <label id="labeluname" style="color:red; visibility:hidden;"></label>
+          <p>Password</p>
+          <input id="pass" type="password" placeholder="Password" required>
+          <label id="labelpass" style="color:red; visibility:hidden;"></label>
+          <p>Confirm Password</p>
+          <input id="confirmpass" type="password" placeholder="Confirm Password" required>
+          <label id="labelconfirmpass" style="color:red; visibility:hidden;"></label>
+          <input type="button" value="Sign Up" onclick="validatemail(), validatepass(), validateusername(), matchpass(), validatefirstname(), validatelastname(), check()">
+
+      </form>
+     </div>
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
